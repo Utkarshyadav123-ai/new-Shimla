@@ -1,0 +1,254 @@
+﻿$(window).on('load', function () {
+
+    renderTime();
+
+    $('#flexSlider').flexslider({
+        animation: "slide",
+        controlNav: true,
+        start: function (slider) {
+            $('body').removeClass('loading');
+        }
+    });
+
+    $('#flexSlider_new').flexslider({
+        animation: "slide",
+        controlNav: true,
+        start: function (slider) {
+            $('body').removeClass('loading');
+        }
+    });
+
+    $('#flexSlider_new2').flexslider({
+        animation: "slide",
+        controlNav: true,
+        start: function (slider) {
+            $('body').removeClass('loading');
+        }
+    });
+
+    //Horizontal Tab
+    $('#parentHorizontalTab').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true, // 100% fit in a container
+        activetab_bg: '#e3e3e3', // background color for active tabs in this group
+        inactive_bg: '#f1f1f1', // background color for inactive tabs in this group
+        tabidentify: 'hor_1', // The tab groups identifier
+        activate: function (event) { // Callback function if tab is switched
+            var $tab = $(this);
+            var $info = $('#nested-tabInfo');
+            var $name = $('span', $info);
+            $name.text($tab.text());
+            $info.show();
+        }
+    });
+
+    //Horizontal Tab
+    $('#parentHorizontalTab_2').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true, // 100% fit in a container
+        activetab_bg: '#e3e3e3', // background color for active tabs in this group
+        inactive_bg: '#f1f1f1', // background color for inactive tabs in this group
+        tabidentify: 'hor_1', // The tab groups identifier
+        activate: function (event) { // Callback function if tab is switched
+            var $tab = $(this);
+            var $info = $('#nested-tabInfo');
+            var $name = $('span', $info);
+            $name.text($tab.text());
+            $info.show();
+        }
+    });
+
+    //Horizontal Tab
+    $('#parentHorizontalTab_RS').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true, // 100% fit in a container
+        activetab_bg: '#e3e3e3', // background color for active tabs in this group
+        inactive_bg: '#f1f1f1', // background color for inactive tabs in this group
+        tabidentify: 'hor_1', // The tab groups identifier
+        activate: function (event) { // Callback function if tab is switched
+            var $tab = $(this);
+            var $info = $('#nested-tabInfo');
+            var $name = $('span', $info);
+            $name.text($tab.text());
+            $info.show();
+        }
+    });
+    // Child Tab
+    $('#ChildVerticalTab_1').easyResponsiveTabs({
+        type: 'vertical',
+        width: 'auto',
+        fit: true,
+        tabidentify: 'ver_1', // The tab groups identifier
+        activetab_bg: '#fff', // background color for active tabs in this group
+        inactive_bg: '#fff', // background color for inactive tabs in this group
+        active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+        active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+    });
+
+    var accordion = (function () {
+        var $accordion = $('.js-accordion');
+        var $accordion_header = $accordion.find('.js-accordion-header');
+        var $accordion_item = $('.js-accordion-item');
+
+        // default settings 
+        var settings = {
+            // animation speed
+            speed: 400,
+
+            // close all other accordion items if true
+            oneOpen: false
+        };
+
+        return {
+            // pass configurable object literal
+            init: function ($settings) {
+                $accordion_header.on('click', function () {
+                    accordion.toggle($(this));
+                });
+
+                $.extend(settings, $settings);
+
+                // ensure only one accordion is active if oneOpen is true
+                if (settings.oneOpen && $('.js-accordion-item.active').length > 1) {
+                    $('.js-accordion-item.active:not(:first)').removeClass('active');
+                }
+
+                // reveal the active accordion bodies
+                $('.js-accordion-item.active').find('> .js-accordion-body').show();
+            },
+            toggle: function ($this) {
+
+                if (settings.oneOpen && $this[0] != $this.closest('.js-accordion').find('> .js-accordion-item.active > .js-accordion-header')[0]) {
+                    $this.closest('.js-accordion')
+                           .find('> .js-accordion-item')
+                           .removeClass('active')
+                           .find('.js-accordion-body')
+                           .slideUp()
+                }
+
+                // show/hide the clicked accordion item
+                $this.closest('.js-accordion-item').toggleClass('active');
+                $this.next().stop().slideToggle(settings.speed);
+            }
+        }
+    })();
+
+    accordion.init({ speed: 300, oneOpen: true });
+    var state = 'stopped';
+    var speed;
+    var add;
+
+    if ($('.newsticker').length > 0) {
+        var newsticker = $('.newsticker').newsTicker({
+            row_height: 65,
+            max_rows: 3,
+            duration: 2000,
+            prevButton: $('#ticker_up'),
+            nextButton: $('#ticker_down')
+        });
+    }
+
+    $('#ticker_play_pause').click(function () {
+        if (state == 'stopped') {
+            state = 'turning';
+            newsticker.newsTicker('stop');
+            $(this).attr('title', 'Click to Play');
+            $(this).removeClass('fa-pause-circle-o').addClass('fa-play-circle-o');
+        } else {
+            state = 'stopped';
+            newsticker.newsTicker('start');
+            $(this).attr('title', 'Click to Pause');
+            $(this).removeClass('fa-play-circle-o').addClass('fa-pause-circle-o');
+        }
+    });
+
+
+    $('#Menu_Mobile').click(function () {
+        var state = $(this).attr('Data-Stats');
+        if (state == 'close') {
+            $(this).attr('Data-Stats', 'open');
+            $('#nav').show();
+        } else {
+            $(this).attr('Data-Stats', 'close');
+            $('#nav').hide();
+        }
+    });
+    
+    renderTime();
+});
+
+function renderTime() {
+
+    var currentTime = new Date();
+    var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+    
+    var diem = "AM";
+    var h = currentTime.getHours();
+    var m = currentTime.getMinutes();
+    var s = currentTime.getSeconds();
+    setTimeout('renderTime()', 1000);
+    if (h == 0) {
+        h = 12;
+    } else if (h > 12) {
+        h = h - 12;
+        diem = "PM";
+    }
+    if (h < 10) {
+        h = "0" + h;
+    }
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (s < 10) {
+        s = "0" + s;
+    }
+
+    var myClock = document.getElementById('clockDisplay');
+    myClock.innerText = weekday[currentTime.getDay()] + ", " + currentTime.getDate() + " " + monthname[currentTime.getMonth()] + ", " + currentTime.getFullYear() + " " + h + ":" + m + ":" + s + " " + diem;
+
+}
+
+var parameter = Sys.WebForms.PageRequestManager.getInstance();
+parameter.add_endRequest(function () {
+    // renderTime();
+});
+
+/* ###################### Function to activate form button to open the slider. ###################### */
+function open_panel() {
+    slideIt();
+    var a = document.getElementById("sidebar");
+    a.setAttribute("id", "sidebar1");
+    a.setAttribute("onclick", "close_panel()");
+}
+
+/* ###################### Function to slide the sidebar form (open form) ###################### */
+function slideIt() {
+    var slidingDiv = document.getElementById("slider");
+    var stopPosition = 0;
+    if (parseInt(slidingDiv.style.left) < stopPosition) {
+        slidingDiv.style.left = parseInt(slidingDiv.style.left) + 2 + "px";
+        setTimeout(slideIt, 1);
+    }
+}
+
+/* ###################### Function to activate form button to close the slider. ###################### */
+function close_panel() {
+    slideIn();
+    a = document.getElementById("sidebar1");
+    a.setAttribute("id", "sidebar");
+    a.setAttribute("onclick", "open_panel()");
+}
+
+/* ###################### Function to slide the sidebar form (slide in form) ###################### */
+function slideIn() {
+    var slidingDiv = document.getElementById("slider");
+    var stopPosition = -241;
+    if (parseInt(slidingDiv.style.left) > stopPosition) {
+        slidingDiv.style.left = parseInt(slidingDiv.style.left) - 2 + "px";
+        setTimeout(slideIn, 1);
+    }
+}

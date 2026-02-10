@@ -1,0 +1,34 @@
+﻿// /*global $:false */
+// /*global moment:true */
+(function ($) {
+    $("#LoaderBody").hide();
+    $("#preloader").hide();
+
+    window.onbeforeunload = function () {
+        var inputs = document.getElementsByTagName("INPUT");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == "button" || inputs[i].type == "submit") {
+                $("#LoaderBody").show();
+                $("#preloader").show();
+                inputs[i].disabled = true;
+            }
+        }
+    };
+
+    Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+    function BeginRequestHandler(sender, args) {
+        ////////alert("BeginRequestHandler");
+        $("#LoaderBody").show();
+        $("#preloader").show();
+        
+    }
+
+    function EndRequestHandler(sender, args) {
+        //////////alert("EndRequestHandler");
+        $("#LoaderBody").hide();
+        $("#preloader").hide();
+    }
+
+})(jQuery);

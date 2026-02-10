@@ -1,0 +1,250 @@
+﻿function Clickheretoprint_ExamApplicationForm() {
+    var contents = document.getElementById("ctl00_MainContent_Panel_Candidate").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    frame1.style.border = "1px solid #ddd";
+    document.body.appendChild(frame1);
+    var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head> <title> Application Form Submitted Successfully Confirmation </title>');
+    frameDoc.document.write('<link href="../../Assets/css/Print_Application.css" rel="stylesheet" type="text/css" />');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('<div style="border:1px solid #ddd;padding:10px;">');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</div>');
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+    return false;
+}
+
+function Clickheretoprint_Update() {
+    var contents = document.getElementById("print_content").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    frame1.style.border = "1px solid #ddd";
+    document.body.appendChild(frame1);
+    var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head> <title> Application Form Submitted Successfully Confirmation </title>');
+    frameDoc.document.write('<link href="../../Assets/css/Print_Application.css" rel="stylesheet" type="text/css" />');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('<div style="border:1px solid #ddd;padding:10px;">');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</div>');
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+    return false;
+}
+
+function Clickheretoprint() {
+    var contents = document.getElementById("print_content").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    frame1.style.border = "1px solid #ddd";
+    document.body.appendChild(frame1);
+    var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head> <title> Application Form Submitted Successfully Confirmation </title>');
+    frameDoc.document.write('<link href="../../Assets/css/Print_Application.css" rel="stylesheet" type="text/css" />');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('<div style="border:1px solid #ddd;padding:10px;">');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</div>');
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+    return false;
+}
+
+function Clickheretoprint_CollegeList() {
+    var contents = document.getElementById("print_content").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    frame1.style.border = "1px solid #ddd";
+    document.body.appendChild(frame1);
+    var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head> <title> Application Form Submitted Successfully Confirmation </title>');
+    frameDoc.document.write('<link href="../../../Assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('<div style="border:1px solid #ddd;padding:10px;">');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</div>');
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+    return false;
+}
+
+function Clickheretoprint1() {
+    var disp_setting = "toolbar=yes,location=no,directories=yes,menubar=yes,";
+    disp_setting += "scrollbars=yes,width=900, height=700, left=10, top=10";
+    var content_vlue = document.getElementById("print_content1").innerHTML;
+
+    var docprint = window.open("", "", disp_setting);
+    docprint.document.open();
+    //   docprint.document.write('<html><head><title> UPPRPB Lucknow </title>');
+    docprint.document.write('<link href="css/print.css" rel="stylesheet" type="text/css" />')
+    docprint.document.write('</head><body onLoad="self.print()" ><center>');
+    docprint.document.write(content_vlue);
+    docprint.document.write('</center></body></html>');
+    docprint.document.close();
+    docprint.focus();
+
+
+}
+
+function PrintContent111() {
+    printWindow = window.open("", "mywindow", "location=0,status=0,scrollbars=1,resizable=1");
+
+    var strContent = "<html><head>";
+    strContent = strContent + "<title" + ">Print Preview</title>";
+    strContent = strContent + "<link href='css/print.css' type='text/css' rel='stylesheet' />";
+    strContent = strContent + "</head><body onLoad='self.print()'>";
+    
+    strContent = strContent + "<div style='width:100%;'>";
+
+    var newsDiv = document.createElement('div');
+    newsDiv.innerHTML = document.getElementById('mainprint').innerHTML;
+    for (var i = 0; i < newsDiv.childNodes.length; i++) {
+        if (newsDiv.childNodes[i].id == 'maindiv')
+            newsDiv.childNodes[i].className = "Invisible"; //newsDiv.removeChild(newsDiv.childNodes[i]);
+    }
+
+    strContent = strContent + newsDiv.innerHTML;
+    strContent = strContent + "</div>";
+    strContent = strContent + "</body>";
+    printWindow.document.write(strContent);
+    printWindow.document.close();
+    printWindow.focus();
+}
+
+function PrintContent() {
+    printWindow = window.open("", "mywindow", "location=0,status=0,resizable=1 scrollbars=yes,width=900, height=700, left=10, top=10");
+
+    var strContent = "<html><head>";
+    strContent = strContent + "<title" + ">Print Preview</title>";
+    //strContent = strContent + "<link href='css/print.css' type='text/css' rel='stylesheet' />";
+    strContent = strContent + "</head><body onLoad='self.print()'>";
+
+    strContent = strContent + "<div style='width:100%;'>";
+
+    var newsDiv = document.createElement('div');
+    newsDiv.innerHTML = document.getElementById('mainprint').innerHTML;
+    for (var i = 0; i < newsDiv.childNodes.length; i++) {
+        if (newsDiv.childNodes[i].id == 'maindiv')
+            newsDiv.childNodes[i].className = "Invisible"; //newsDiv.removeChild(newsDiv.childNodes[i]);
+    }
+
+    strContent = strContent + newsDiv.innerHTML;
+    strContent = strContent + "</div>";
+    strContent = strContent + "</body>";
+    printWindow.document.write(strContent);
+    printWindow.document.close();
+    printWindow.focus();
+}
+
+function Clickheretoprint_Slip() {
+    var disp_setting = "toolbar=yes,location=no,directories=yes,menubar=yes,";
+    disp_setting += "scrollbars=yes,width=700, height=500, left=10, top=10";
+    var content_vlue = document.getElementById("print_content").innerHTML;
+
+    var docprint = window.open("", "", disp_setting);
+    docprint.document.open();
+    //   docprint.document.write('<html><head><title> UPPSC Prayagraj </title>');
+    docprint.document.write('<link href="../mm_health_nutr.css" rel="stylesheet" type="text/css" />')
+    docprint.document.write('</head><body onLoad="self.print()"><center>');
+    docprint.document.write(content_vlue);
+    docprint.document.write('</center></body></html>');
+    docprint.document.close();
+    docprint.focus();
+}
+
+function Clickheretoprint_DocRefNo() {
+    var disp_setting = "toolbar=no,location=no,directories=no,menubar=no,";
+    disp_setting += "scrollbars=yes,width=700, height=200, left=1, top=1";
+    var content_vlue = document.getElementById("print_content").innerHTML;
+
+    var docprint = window.open("", "", disp_setting);
+    docprint.document.open();
+    //   docprint.document.write('<html><head><title> UPPSC Prayagraj </title>');
+    docprint.document.write('<link href="../../css/DK_General_Css.css" rel="stylesheet" type="text/css" />')
+    docprint.document.write('</head><body onLoad="self.print()"><center>');
+    docprint.document.write(content_vlue);
+    docprint.document.write('</center></body></html>');
+    docprint.document.close();
+    docprint.focus();
+
+
+}
+
+function Clickheretoprint_DocRefNo1() {
+    var disp_setting = "toolbar=no,location=no,directories=no,menubar=no,";
+    disp_setting += "scrollbars=yes,width=700, height=200, left=1, top=1";
+    var content_vlue = document.getElementById("print_content").innerHTML;
+
+    var docprint = window.open("", "", disp_setting);
+    docprint.document.open();
+    //   docprint.document.write('<html><head><title> UPPSC Prayagraj </title>');
+    docprint.document.write('<link href="../../css/Rec.css" rel="stylesheet" type="text/css" />')
+    docprint.document.write('</head><body onLoad="self.print()"><center>');
+    docprint.document.write(content_vlue);
+    docprint.document.write('</center></body></html>');
+    docprint.document.close();
+    docprint.focus();
+
+
+}
+
+function PrintCentreAllotmentStatistics() {
+    var contents = document.getElementById("print_content").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    frame1.style.border = "1px solid #ddd";
+    document.body.appendChild(frame1);
+    var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head> <title> Examination Centre Allotment Statistics Report </title>');
+    frameDoc.document.write('<link href="../../../Assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('<div style="border:none; border-width:0px; padding:8px; color:black;">');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</div>');
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 500);
+    return false;
+}
+

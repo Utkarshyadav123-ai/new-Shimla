@@ -1,0 +1,83 @@
+(function () {
+    var lang = getCookie('Lang_Id');
+    var Project_url = 'https://uppsc.up.nic.in/';
+    var app = angular.module('MultilingualApp', ['pascalprecht.translate', 'ui.router']).config(function () {
+        angular.lowercase = angular.$$lowercase;
+        angular.uppercase = angular.$$uppercase;
+    });
+
+    app.config(['$stateProvider', '$urlRouterProvider', '$translateProvider', '$translatePartialLoaderProvider', function ($stateProvider, $urlRouterProvider, $translateProvider, $translatePartialLoaderProvider) {
+
+        //###################### For Masters Only ######################
+        $translatePartialLoaderProvider.addPart('Main');
+        $translateProvider.useLoader('$translatePartialLoader', {
+            urlTemplate: Project_url + "Assets/Locales/{part}/{lang}.json"
+        });
+        if (lang != null) {
+            $translateProvider.preferredLanguage(lang);
+        } else {
+            $translateProvider.preferredLanguage('en');
+        }
+
+        //###################### For Term Pages Only ######################
+        if (angular.element('#HomePage').length) {
+            $translatePartialLoaderProvider.addPart('HomePage');
+            $translateProvider.useLoader('$translatePartialLoader', {
+                urlTemplate: Project_url + "Assets/Locales/{part}/{lang}.json"
+            });
+            if (lang != null) {
+                $translateProvider.preferredLanguage(lang);
+            } else {
+                $translateProvider.preferredLanguage('en');
+            }
+        }
+
+        //###################### For Term Pages Only ######################
+        if (angular.element('#TermsPage').length) {
+            $translatePartialLoaderProvider.addPart('TermsPage');
+            $translateProvider.useLoader('$translatePartialLoader', {
+                urlTemplate: Project_url + "Assets/Locales/{part}/{lang}.json"
+            });
+            if (lang != null) {
+                $translateProvider.preferredLanguage(lang);
+            } else {
+                $translateProvider.preferredLanguage('en');
+            }
+        }
+
+        //###################### For Home Only ######################
+        $translatePartialLoaderProvider.addPart('Home');
+        $translateProvider.useLoader('$translatePartialLoader', {
+            urlTemplate: Project_url + "Assets/Locales/{part}/{lang}.json"
+        });
+        if (lang != null) {
+            $translateProvider.preferredLanguage(lang);
+        } else {
+            $translateProvider.preferredLanguage('en');
+        }
+
+    }]);
+
+    app.run(function ($rootScope, $translate) {
+        $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+            $translate.refresh();
+        });
+    });
+
+    app.controller('MultilingualController', ['$scope', '$translate', function ($scope, $translate) {
+        var Project_url = 'https://uppsc.up.nic.in/';
+        var thirtyDays = 1000 * 60 * 60 * 24 * 30;
+        var expireDate = new Date((new Date()).valueOf() + thirtyDays);
+        if (lang != null) {
+            $scope.Lang_Value = lang;
+        } else {
+            $scope.Lang_Value = 'en';
+        }
+        $scope.Lang_Change = function () {
+            $translate.use($scope.Lang_Value);
+            document.cookie = 'Lang_Id' + "=" + $scope.Lang_Value + "; expires=" + expireDate.toGMTString() + "; path=/";
+            location.reload();
+        };
+    }]);
+
+})();

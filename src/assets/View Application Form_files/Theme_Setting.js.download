@@ -1,0 +1,248 @@
+﻿function getCookie(Name) {
+    var re = new RegExp(Name + "=[^;]+", "i"); //construct RE to search for target name/value pair
+    if (document.cookie.match(re)) //if cookie found
+        return document.cookie.match(re)[0].split("=")[1] //return its value
+    return null
+}
+
+function setCookie(name, value, days) {
+    var expireDate = new Date()
+    var expstring = (typeof days != "undefined") ? expireDate.setDate(expireDate.getDate() + parseInt(days)) : expireDate.setDate(expireDate.getDate() - 5)
+    document.cookie = name + "=" + value + "; expires=" + expireDate.toGMTString() + "; path=/";
+}
+
+function deleteCookie(name) {
+    setCookie(name, "moot");
+}
+
+jQuery(document).ready(function () {
+    var Project_url = getCookie('Base_url_pscnv');
+    Project_url = "https://uppsc.up.nic.in/";
+    // ###################### Onclick setting ######################
+    jQuery('.contrast_setting button.btn').click(function () {
+        var thirtyDays = 1000 * 60 * 60 * 24 * 30;
+        var theme_id = $(this).attr('data-id');
+        var color_code = $(this).attr('data-color');
+        var expireDate = new Date((new Date()).valueOf() + thirtyDays);
+        document.cookie = 'theme' + "=" + theme_id + "; expires=" + expireDate.toGMTString() + "; path=/";
+        document.cookie = 'color_code' + "=" + color_code + "; expires=" + expireDate.toGMTString() + "; path=/";
+        document.cookie = "username=pscnv";
+        Bind_Css_file(theme_id, Project_url);
+        //  initState_Chart(theme_color);
+    });
+
+    // ###################### Onclick setting ######################
+    jQuery('div[id*=Div_theme_mngt] > div > i.fa').click(function () {
+        var thirtyDays = 1000 * 60 * 60 * 24 * 30;
+        var theme_id = $(this).attr('data-id');
+        var color_code = $(this).attr('data-color');
+        var expireDate = new Date((new Date()).valueOf() + thirtyDays);
+        document.cookie = 'theme' + "=" + theme_id + "; expires=" + expireDate.toGMTString() + "; path=/";
+        document.cookie = 'color_code' + "=" + color_code + "; expires=" + expireDate.toGMTString() + "; path=/";
+        document.cookie = "username=pscnv";
+        Bind_Css_file(theme_id, Project_url);
+        // initState_Chart(theme_color);
+    });
+
+    // ###################### getCookie setting ######################
+    if ((getCookie('theme') == '') || (getCookie('theme') == null)) {
+        Bind_Css_file('sierra', Project_url);
+    } else {
+        Bind_Css_file(getCookie('theme'), Project_url);
+    }
+});
+
+function Bind_Css_file(name, path) {
+    if (jQuery('head').find('link#theme_css').length > 0) {
+        jQuery('head').find('link#theme_css').remove();
+    }
+    jQuery('head').append('<link id="theme_css" rel="stylesheet" type="text/css" media="screen" href="' + path + 'Assets/css/theme/colorscheme-' + name + '.css">');
+
+    // ###################### getCookie setting ######################
+    jQuery('#Img_head_logo').attr('src', path + 'Assets/image/theme/psc_' + name + '.png');
+
+    // ###################### Setting Footer background Image ######################
+    jQuery('footer.footer-section').css({ "padding-top": "0px", "background-image": "url('" + path + "Assets/image/theme/footer-bottom-" + name + ".png'" });
+
+    jQuery('#ctl00_Image5').attr('src', '' + path + 'Assets/image/theme/niclogo_' + name + '.png');
+    jQuery('#ctl00_Img_head_logo').attr('src', '' + path + 'Assets/image/theme/psc_' + name + '.png');
+}
+
+$(function () {
+    $('ul.tabs li').click(function () {
+        var tab_id = $(this).attr('data-tab');
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+        $(this).addClass('current');
+        $("#" + tab_id).addClass('current');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.toggle').click(function (e) {
+        var $this = $(this);
+        if ($this.next().hasClass('show')) {
+            $this.next().removeClass('show');
+            $this.find("i").removeClass("fa-minus").addClass("fa-plus");
+        } else {
+            $this.find("i").removeClass("fa-plus").addClass("fa-minus");
+            $this.next().toggleClass('show');
+        }
+    });
+
+});
+
+var parameter = Sys.WebForms.PageRequestManager.getInstance();
+parameter.add_endRequest(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('.toggle').click(function (e) {
+        var $this = $(this);
+        if ($this.next().hasClass('show')) {
+            $this.next().removeClass('show');
+            $this.find("i").removeClass("fa-minus").addClass("fa-plus");
+        } else {
+            $this.find("i").removeClass("fa-plus").addClass("fa-minus");
+            $this.next().toggleClass('show');
+        }
+    });
+
+    $('ul.tabs li').click(function () {
+        var tab_id = $(this).attr('data-tab');
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+        $(this).addClass('current');
+        $("#" + tab_id).addClass('current');
+    });
+
+});
+
+/* -----------------------------------------
+   HIGH CONTRAST MODES
+   /source/js/cagov/high-contrast.js
+----------------------------------------- */
+
+// TODO: Settings stored in cookies
+
+$(document).ready(function () {
+
+    //
+    // HIGH CONTRAST MODE
+    // --------------------------------------------------
+    var enableHighContrastButton = $('.enableHighContrastMode');
+    var disableHighContrastButton = $('.disableHighContrastMode');
+    var theHTML = $('html');
+
+    var isHighContrast = localStorage.getItem('high-contrast');
+
+    function onContrast() {
+        enableHighContrastButton.addClass('active');
+        disableHighContrastButton.removeClass('active');
+        theHTML.addClass('high-contrast');
+        localStorage.setItem('high-contrast', 'true');
+    }
+
+    function OffContrast() {
+        disableHighContrastButton.addClass('active');
+        enableHighContrastButton.removeClass('active');
+        theHTML.removeClass('high-contrast');
+        // disable
+        localStorage.removeItem('high-contrast');
+    }
+
+
+    if (isHighContrast) {
+        onContrast();
+    }
+
+    // Enable High Contrast
+    enableHighContrastButton.on('click', onContrast);
+
+    // Disable High Contrast
+    disableHighContrastButton.on('click', OffContrast);
+
+    //
+    // TEXT ONLY MODE
+    // --------------------------------------------------
+
+    var enableTextOnlyButton = $('.enableTextOnlyMode');
+    var disableTextOnlyButton = $('.disableTextOnlyMode');
+
+    // Enable Text Only
+    enableTextOnlyButton.on("click", function () {
+        enableTextOnlyButton.addClass('active');
+        disableTextOnlyButton.removeClass('active');
+        $('link[rel~="stylesheet"]').prop('disabled', true);
+    });
+
+    // Disable Text Only
+    disableTextOnlyButton.on("click", function () {
+        disableTextOnlyButton.addClass('active');
+        enableTextOnlyButton.removeClass('active');
+        $('link[rel~="stylesheet"]').prop('disabled', false);
+    });
+
+    //
+    // INCREASE FONT SIZE
+    // --------------------------------------------------  TODO: Evaluate the
+
+    //accessibility duplication vs using inbuilt browser
+    //controls
+
+    var incFontSize = $('.increaseTextSize');
+    var decFontSize = $('.decreaseTextSize');
+    var resetFontSize = $('.resetTextSize');
+
+    // in rems's
+    var MAXFONTSIZE = 1.5;
+    var MINFONTSIZE = 1;
+    var STEPVALUE = .1;
+
+    // Read in previous settings and convert to number
+    var fontSize = +localStorage.getItem('font-size');
+    if (fontSize) {
+        $('html').css("font-size", fontSize + 'rem')
+    } else {
+        fontSize = 1;
+        $('html').css("font-size", fontSize + 'rem')
+    }
+
+    // init button styles for fonts
+    updateFontBtns(fontSize);
+
+    // utility functions
+    function updateFont(f) {
+        var updatedSize = Math.min(MAXFONTSIZE, Math.max(f, MINFONTSIZE))
+        localStorage.setItem('font-size', updatedSize);
+        $('html').css("font-size", updatedSize + "rem");
+        updateFontBtns(updatedSize);
+        return updatedSize;
+    }
+
+    function updateFontBtns(f) {
+        if (f >= MAXFONTSIZE) {
+            // incFontSize.addClass('disabled')
+            // decFontSize.removeClass('disabled');
+        } else if (f <= MINFONTSIZE) {
+            // decFontSize.addClass('disabled')
+            // incFontSize.removeClass('disabled');
+        } else {
+            // incFontSize.removeClass('disabled');
+            // decFontSize.removeClass('disabled')
+        }
+    }
+
+    incFontSize.on('click', function () {
+        fontSize += STEPVALUE
+        fontSize = updateFont(fontSize);
+    });
+
+    decFontSize.on('click', function () {
+        fontSize -= STEPVALUE;
+        fontSize = updateFont(fontSize);
+    });
+
+    resetFontSize.on('click', function () {
+        fontSize = updateFont(1)
+    })
+});
+

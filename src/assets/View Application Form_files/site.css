@@ -1,0 +1,922 @@
+﻿@charset "utf-8";
+/*Custom Nav*/
+body {
+    color: #535353;
+    background: url(../images/body-bg.png);
+    font-family: 'Lato';
+}
+/*All Wrapper*/
+.bg-wrapper.blue-bg {
+    /*background:#1f4a7c;*/
+    padding: 50px 0px;
+}
+
+.nav-wrapper {
+    background: #f9f9f9;
+}
+
+.header-wrapper {
+    border-bottom: 0px solid #d0d0d0;
+    background: #fff;
+}
+
+.nav-wrapper ul li:hover a.dropdown-toggle,
+.nav-wrapper ul li.hover a.dropdown-toggle,
+.nav-wrapper ul li.active a.dropdown-toggle {
+    border-left: 0px solid #3f51b5 ! important;
+}
+
+.nav-wrapper ul li a {
+    padding: 0px 18px;
+}
+
+#nav li:hover > ul, #nav li.hover > ul, #nav a:focus + ul, #nav .hover a:focus {
+    margin-left: 1px;
+}
+
+.nav-wrapper ul ul {
+    background: #f9f9f9;
+    border:none;
+}
+
+/*Custom Slide*/
+.slides > li {
+    position: relative;
+}
+
+.slide-caption {
+    position: absolute;
+    text-align: center;
+    bottom: 25px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+}
+
+    .slide-caption h2 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 300%;
+        line-height: 115%;
+    }
+
+        .slide-caption h2 span {
+            display: block;
+            font-weight: 300;
+        }
+
+.bttn-more {
+    padding: 8px 20px;
+    display: inline-block;
+    color: #5a9202;
+    font-size: 110%;
+    text-transform: uppercase;
+    border: 2px solid #5a9202;
+    margin: 10px 0px;
+}
+
+    .bttn-more i {
+        margin-left: 10px;
+        font-size: 110%;
+    }
+
+    .bttn-more:hover {
+        background: #5a9202;
+        color: #fff;
+    }
+
+.body-container h2.title {
+    font-size: 280%;
+    font-weight: 600;
+}
+
+.document-holder {
+    background-image: url(../images/ico-pdf.png);
+    background-position: 30px center;
+    background-repeat: no-repeat;
+    background-color: #f9f9f9;
+    padding: 25px 25px 25px 145px;
+    min-height: 200px;
+}
+
+    .document-holder h3 {
+        color: #163754;
+        font-weight: 300;
+        font-size: 250%;
+        padding-bottom: 10px;
+    }
+
+    .document-holder ul li {
+        display: block;
+        background: url(../images/blt-doc.png) no-repeat 0px 4px;
+        padding: 0px 0px 10px 20px;
+        color: #6c6c6c;
+    }
+
+        .document-holder ul li a {
+        }
+
+            .document-holder ul li a:hover {
+                text-decoration: underline;
+                color: #2a2a2a;
+            }
+
+.links-holder {
+    float: left;
+    padding: 0px 0px 0 0;
+}
+
+    .links-holder.quick-link {
+        width: 40%;
+    }
+
+    .links-holder.fade-bg {
+        width: 20%;
+        /*	background:#285385;
+	padding-right:30px;
+	padding-left:30px;*/
+    }
+
+    .links-holder.same-bg {
+        width: 20%;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .links-holder h4 {
+        font-size: 150%;
+        padding-bottom: 15px;
+        line-height: 110%;
+        color: #000;
+    }
+
+    .links-holder ul li {
+        display: block;
+        padding: 0 0 8px 20px;
+        background: url(../images/blt-doc.png) no-repeat 0px 3px;
+    }
+
+    .links-holder.quick-link ul li {
+        float: left;
+        width: 50%;
+    }
+
+    .links-holder ul li a {
+    }
+
+        .links-holder ul li a:hover {
+            text-decoration: underline;
+        }
+
+.cercle-container ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+    .cercle-container ul li a {
+        background-color: #fff;
+        width: 130px;
+        height: 130px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -o-border-radius: 100%;
+        -ms-border-radius: 100%;
+        position: relative;
+    }
+
+        .cercle-container ul li a span {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            left: 0px;
+            bottom: 25px;
+            padding: 0px 20px;
+            font-size: 110%;
+            font-weight: 600;
+            line-height: 110%;
+            text-transform: uppercase;
+            color: #2a2a2a;
+        }
+
+        .cercle-container ul li a:hover span {
+            color: #fff;
+        }
+
+        .cercle-container ul li a:hover {
+            background-color: #5a9202;
+        }
+
+    .cercle-container ul li.cercle-ico-1 a {
+        background-image: url(../images/ico-sprite.png);
+        background-position: 44px 25px;
+    }
+
+        .cercle-container ul li.cercle-ico-1 a:hover {
+            background-image: url(../images/ico-sprite.png);
+            background-position: 44px -214px;
+        }
+
+    .cercle-container ul li.cercle-ico-2 a {
+        background-image: url(../images/ico-sprite.png);
+        background-position: -84px 25px;
+    }
+
+        .cercle-container ul li.cercle-ico-2 a:hover {
+            background-image: url(../images/ico-sprite.png);
+            background-position: -84px -214px;
+        }
+
+    .cercle-container ul li.cercle-ico-3 a {
+        background-image: url(../images/ico-sprite.png);
+        background-position: -218px 25px;
+    }
+
+        .cercle-container ul li.cercle-ico-3 a:hover {
+            background-image: url(../images/ico-sprite.png);
+            background-position: -218px -216px;
+        }
+
+    .cercle-container ul li.cercle-ico-4 a {
+        background-image: url(../images/ico-sprite.png);
+        background-position: -350px 30px;
+    }
+
+        .cercle-container ul li.cercle-ico-4 a:hover {
+            background-image: url(../images/ico-sprite.png);
+            background-position: -350px -219px;
+        }
+
+.box-wrapper h2 {
+    font-size: 180%;
+    background: url(../images/imp_h_bg.png);
+    padding: 20px 0;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+}
+
+.imp-links-holder {
+    background-image: url(../images/imp_bg.png);
+    background-repeat: repeat;
+    width: 100%;
+    border-bottom: #131313 1px solid;
+}
+
+.imp-links-glow-holder {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.box-container ul li {
+    float: left;
+    text-align: center;
+    width: 20%;
+    padding-top: 120px;
+    padding-bottom: 30px;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+}
+
+.box-container li span {
+    color: #fff;
+    height: 32px;
+    display: inline-block;
+    font-size: 120%;
+    margin: 20px 0;
+}
+
+.box-container ul li.box-ico-1 {
+    background-image: url(../images/imp-link-img-1.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
+.box-container ul li.box-ico-2 {
+    background-image: url(../images/imp-link-img-2.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
+.box-container ul li.box-ico-3 {
+    background-image: url(../images/imp-link-img-3.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
+.box-container ul li.box-ico-4 {
+    background-image: url(../images/imp-link-img-4.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
+.box-container ul li.box-ico-5 {
+    background-image: url(../images/imp-link-img-5.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+}
+
+.box-container a.read-more {
+    border: 1px solid #c5c4c4;
+    color: #fff;
+    display: inline-block;
+    font-size: 92%;
+    font-weight: 300;
+    line-height: 140%;
+    padding: 10px;
+}
+
+.box-container ul li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.box-container a.read-more i {
+    position: relative;
+    top: 2px;
+}
+
+.carousel-wrapper {
+    padding: 20px 0px;
+}
+
+.inner-banner {
+    background-position: center bottom !important;
+    background-size: cover !important;
+    display: block;
+    height: 180px;
+    width: 100%;
+}
+
+.inner-banner-container {
+    height: 180px;
+}
+
+    .inner-banner-container h2 {
+        color: #fff;
+        font-size: 250%;
+        font-weight: 600;
+        position: absolute;
+        left: 0px;
+        bottom: 20px;
+        line-height: 100%;
+    }
+
+.top-content {
+    border-bottom: 1px solid #d5d5d5;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+    .top-content h3 {
+        font-size: 200%;
+        font-weight: 600;
+        color: #285385;
+        padding-bottom: 10px;
+    }
+
+    .top-content h4 {
+        font-size: 150%;
+        font-weight: 300;
+        color: #5a9202;
+        padding: 5px 0 8px 0px;
+        line-height: 110%;
+    }
+
+        .top-content h4 span {
+            font-size: 14px;
+            color: #2a2a2a;
+            font-weight: 400;
+        }
+
+h3.sub-title {
+    font-weight: 600;
+    font-size: 130%;
+    padding-bottom: 20px;
+}
+
+.body-container ul.list li {
+    padding-bottom: 20px;
+}
+
+
+
+
+.body-container h4 {
+    color: #285385;
+    font-size: 200%;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+
+.flexslider li a.bg-slide {
+    height: 400px;
+}
+
+
+.right-content {
+    padding-top: 0px;
+}
+
+
+.body-container {
+    padding-top: 0;
+}
+
+.whats-new-area {
+    background: #eeeeee;
+    line-height: 150%;
+}
+
+.top-bg-wrapper {
+    padding: 30px 0px;
+}
+
+.whats-new-left {
+    width: 20%;
+    background: #ddd;
+    float: left;
+}
+
+    .whats-new-left img {
+        width: 100%;
+    }
+
+.whats-new-right {
+    width: 80%;
+    float: right;
+    padding: 30px 30px;
+}
+
+    .whats-new-right h2 {
+        font-size: 160%;
+        font-weight: 900;
+        padding-bottom: 10px;
+        color: #000;
+    }
+
+.whats-new-left-content {
+    width: 50%;
+    padding-right: 15px;
+    float: left;
+}
+
+.whats-new-right-content {
+    width: 50%;
+    padding-left: 15px;
+    float: right;
+}
+
+.minister-holder {
+    text-align: center;
+    padding: 30px 0px 22px 0;
+    background: #9fb2c0;
+}
+
+.minister-image img {
+    border: 1px solid #d5d5d5;
+}
+
+.minister-name {
+    padding: 10px 10px 0px 10px;
+    line-height: 120%;
+}
+
+    .minister-name span {
+        display: block;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .minister-name kbd {
+        display: block;
+        color: #535353;
+        font-weight: normal;
+        font-size: 90%;
+    }
+
+.interact-area {
+    border-top: 1px solid #e1e1e1;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+    .interact-area a {
+        display: inline-block;
+        color: #000;
+        font-size: 110%;
+        text-align: left;
+        position: relative;
+        padding-right: 40px;
+    }
+
+        .interact-area a span {
+            display: block;
+            font-weight: 600;
+            font-size: 120%;
+        }
+
+        .interact-area a i {
+            font-size: 200%;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            color: #ffbf27;
+        }
+
+.budget-container {
+    text-align: center;
+    padding: 0 0px 22px 0;
+}
+
+
+.content-bottom {
+    display: block;
+    padding: 40px 0px 0 0;
+}
+
+    .content-bottom h2 {
+        color: #000;
+        font-size: 160%;
+        font-weight: 900;
+        padding-bottom: 15px;
+    }
+
+.document-area {
+    padding-top: 10px;
+}
+
+    .document-area ul li {
+        display: block;
+        background: url(../images/blt-doc.png) no-repeat 0px 4px;
+        padding: 0px 0px 15px 20px;
+        color: #6c6c6c;
+    }
+
+        .document-area ul li a {
+            font-size: 100%;
+        }
+
+            .document-area ul li a:hover {
+                text-decoration: underline;
+                color: #2a2a2a;
+            }
+
+.tool {
+    width: 99px;
+    height: 93px;
+    background: url(../images/tool.jpg) no-repeat;
+    position: fixed;
+    bottom: 30%;
+    left: 0;
+    z-index: 9999;
+}
+
+/*new 27-05-2015*/
+
+
+ul#nav li a i.fa-home {
+    font-size: 150%;
+}
+
+.flex-control-nav {
+    display: none;
+    bottom: 10px;
+}
+
+.slide-caption {
+    background: black none repeat scroll 0 0;
+    bottom: 15px;
+    left: 80px;
+    position: absolute;
+    width: 38%;
+    z-index: 1000;
+    text-align: left;
+    background: rgba(72, 92, 153, 0.6);
+    padding: 8px;
+    text-align: justify;
+}
+
+    .slide-caption h2 {
+        color: #fff;
+        font-size: 200%;
+        font-weight: 400;
+        line-height: 115%;
+        text-transform: uppercase;
+    }
+
+    .slide-caption p {
+        color: #fff;
+        font-size: 100%;
+        font-weight: 300;
+        margin: 0px 0;
+    }
+
+.bttn-slide {
+    padding: 10px 15px;
+    display: inline-block;
+    color: #fff;
+    font-size: 140%;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #0b3e66;
+    margin: 10px 0px;
+}
+
+    .bttn-slide:hover {
+        background: #03192a;
+    }
+
+.minister {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.budget-holder {
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0px auto;
+    text-align: left;
+    color: #fff;
+    min-height: 150px;
+}
+
+    .budget-holder img {
+        width: 100%;
+    }
+
+.budget-holder-content {
+    position: absolute;
+    bottom: 20px;
+    margin: 0 10px 66px 30px;
+}
+
+    .budget-holder-content h2 {
+        color: #fff;
+        margin-bottom: 5px;
+        font-size: 130%;
+        font-weight: 400;
+        line-height: 115%;
+        text-transform: uppercase;
+    }
+
+    .budget-holder-content li {
+        background: url(../images/budget_arrow.png) no-repeat 0 5px;
+        padding-left: 15px;
+    }
+
+    .budget-holder-content a i {
+        margin-right: 5px;
+    }
+
+    .budget-holder-content a {
+        color: #fff;
+        font-weight: 300;
+    }
+
+        .budget-holder-content a:hover {
+            color: #f3a9b1;
+            text-decoration: none;
+        }
+
+.banner-bottom-icon-wrapper {
+    background: #1a2e47;
+    margin-bottom: 30px;
+}
+
+.banner-bottom-icon-section-holder {
+    width: 80%;
+    padding: 15px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .banner-bottom-icon-section-holder li {
+        display: inline-block;
+        position: relative;
+        width: 180px;
+    }
+
+    .banner-bottom-icon-section-holder a {
+        color: #fff;
+        display: inline-block;
+        font-size: 120%;
+        text-align: center;
+    }
+
+        .banner-bottom-icon-section-holder a:hover {
+            color: #ccc;
+        }
+
+        .banner-bottom-icon-section-holder a i {
+            color: #fff;
+            display: block;
+            font-size: 200%;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .banner-bottom-icon-section-holder a img {
+            display: block;
+            margin-bottom: 5px;
+            margin: 0 auto;
+        }
+
+
+#container {
+    width: 940px;
+    margin: 0 auto;
+}
+
+
+.logo-carousel-wrapper {
+    background: #fff none repeat scroll 0 0;
+    padding: 30px 0;
+}
+
+    .logo-carousel-wrapper .slides > li {
+        margin: 0 15px;
+    }
+
+.copyright-content {
+    color: #888888;
+    float: right;
+    font-size: 76%;
+    line-height: 150%;
+    padding: 5px 0 10px;
+    text-align: left;
+    width: auto;
+}
+
+.flex-control-paging li a {
+    background: rgba(52, 73, 94, 0.9) none repeat scroll 0 0;
+    border-radius: 20px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3) inset;
+    cursor: pointer;
+    display: block;
+    height: 11px;
+    text-indent: -9999px;
+    width: 11px;
+}
+
+    .flex-control-paging li a.flex-active {
+        background: rgba(18, 31, 44, 0.9) none repeat scroll 0 0;
+        cursor: default;
+    }
+
+.tab-left-content {
+    width: 75%;
+    float: left;
+}
+
+.minister-right-content {
+    width: 25%;
+    float: right;
+}
+
+.whatsnew-container {
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    background: #f3f3f3;
+    margin-bottom: 40px;
+}
+
+    .whatsnew-container h3 {
+        font-weight: 700;
+        font-size: 120%;
+    }
+
+.whatsnew-content {
+    width: 50%;
+    float: left;
+    font-size: 110%;
+    padding-right: 25px;
+    border-right: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.whatsnew-content2 {
+    width: 50%;
+    float: left;
+    font-size: 110%;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+/*================================Inner Page==============================*/
+
+.breadcam {
+    padding-bottom: 5px;
+    width: 100%;
+    margin: 30px 0;
+}
+
+    .breadcam li {
+        float: left;
+        color: #8d8d8d;
+        font-size: 90%;
+    }
+
+        .breadcam li a {
+            background: rgba(0, 0, 0, 0) url("../images/bredcam-arrow.png") no-repeat scroll right 7px;
+            color: #474747;
+            display: block;
+            margin-right: 5px;
+            padding-right: 10px;
+        }
+
+.aboutmainContainer {
+    width: 100%;
+    height: auto;
+    margin: 0 0 30px 0;
+}
+
+.aboutLeftContainer {
+    width: 17%;
+    float: left;
+    height: 100%;
+    border: 1px solid #ccc;
+}
+
+.aboutRightContainer {
+    width: 80%;
+    float: right;
+}
+
+.about-menu {
+    width: 100%;
+    height: auto;
+}
+
+    .about-menu ul li a i {
+        margin-right: 5px;
+    }
+
+    .about-menu li {
+        width: 100%;
+    }
+
+        .about-menu li a {
+            width: 100%;
+            padding: 15px 10px;
+            color: #3b3b3b;
+            display: block;
+            text-decoration: none;
+            font-size: 100%;
+        }
+
+            .about-menu li a:hover {
+                background: #17203e;
+                color: #fff !important;
+                text-decoration: none !important;
+            }
+
+.aboutRightContainer h2 {
+    font-size: 200%;
+    font-weight: 700;
+    color: #79756a;
+    margin-bottom: 5px;
+}
+
+.aboutRightContainer h3 {
+    font-size: 150%;
+    font-weight: 500;
+    color: #79756a;
+    margin-bottom: 5px;
+}
+
+ul#nav > ul > li a:hover {
+    color: #fff !important;
+    background: #17203e;
+}
+
+#nav ul.dropdown-menu {
+    padding: 0px !important;
+    font-size: 13px;
+    min-width: 140px;
+    margin: 0px !important;
+    border-radius: 0px;
+}
+
+
+
+
+/* Color Css */
+.nav-wrapper ul li:hover a, .nav-wrapper ul li.hover a, .nav-wrapper ul li.active a {
+    background: #fff;
+}
+
+ul#nav li a {
+    font-size: 0.85rem;
+    font-weight: 600 !important;
+    text-decoration: none;
+    white-space: break-spaces;
+}
+
+

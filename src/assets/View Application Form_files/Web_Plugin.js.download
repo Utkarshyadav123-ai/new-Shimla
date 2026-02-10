@@ -1,0 +1,186 @@
+$(document).ready(function () {
+    // Error Model Message
+    $('#Error_close').click(function () {
+        $('#ErrorBox').css("right", "-420px");
+    });
+
+    $('.show_date_function').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+    });
+
+    $('.show_date_function_EQ').datepicker({
+        format: 'dd/mm/yyyy',
+        useCurrent: false,
+        constrainInput: false
+    })
+    //Listen for the change even on the input
+    .change(dateChanged)
+    .on('changeDate', dateChanged);
+
+
+    $('.date_show_function').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+    });
+
+    //Initialize Select2 Elements
+    if ($('.select2').length) {
+        $('.select2').select2();
+    }
+
+    $(".fa-exclamation-triangle.Error_Icon").hover(function () {
+        var control_tooltip = "";
+        var Err_Validate_Control = "";
+        Err_Validate_Control = $(this).parent('span').attr('data-val-controltovalidate');
+        control_tooltip = $('#' + Err_Validate_Control).attr('title');
+        $(this).attr('title', control_tooltip);
+    });
+
+    // Initialize InputMask
+    if ($("#ctl00_MainContent_txt_Otp").length > 0) {
+        $("#ctl00_MainContent_txt_Otp").inputmask({
+            mask: "999999",
+            placeholder: "XXXXXX"
+        });
+    }
+
+});
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+function ShowErrorBox(msg) {
+    $('.ErrorMsg').html(msg);
+    $('.popup').show().css("right", "20px");
+    return false;
+}
+
+function RefreshCaptcha(data_id) {
+    var Current_url = window.location.href;
+    var img = document.getElementById(data_id);
+    img.src = getCookie('Base_url') + "Captcha.ashx?query=" + Math.random();
+    var txtbx = document.getElementById("<%=txtInput.ClientID%>");
+    $(txtbx).val("");
+}
+
+function getCookie(Name) {
+    var re = new RegExp(Name + "=[^;]+", "i"); //construct RE to search for target name/value pair
+    if (document.cookie.match(re)) //if cookie found
+        return document.cookie.match(re)[0].split("=")[1] //return its value
+    return null
+}
+
+function dateChanged(ev) {
+    debugger;
+    // Accepts xyz as the value
+    if ($(this).val() == "NA")
+        return true;
+    // Accepts just valid dates as the value
+    var comp = $(this).val().split('/');
+    var m = parseInt(comp[0], 10);
+    var d = parseInt(comp[1], 10);
+    var y = parseInt(comp[2], 10);
+    var date = new Date(y, m - 1, d);
+    if (date.getFullYear() == y && date.getMonth() + 1 == m && date.getDate() == d)
+        return true;
+    $(this).datepicker('hide');
+    console.log("asdasdasdsa");
+}
+
+var parameter = Sys.WebForms.PageRequestManager.getInstance();
+parameter.add_endRequest(function () {
+
+    $('[data-toggle="tooltip"]').tooltip({
+
+    });
+
+    $('.show_date_function').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+    });
+
+    function ShowErrorBox(msg) {
+        $('.ErrorMsg').html(msg);
+        $('.popup').show().css("right", "20px");
+        return false;
+    }
+
+    //Initialize Select2 Elements
+    if ($('.select2').length) {
+        $('.select2').select2({
+            width: 'resolve'
+        });
+    }
+
+    $('.date_show_function').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+    });
+
+    function RefreshCaptcha(data_id) {
+        var Current_url = window.location.href;
+        var img = document.getElementById(data_id);
+        img.src = getCookie('Base_url') + "Captcha.ashx?query=" + Math.random();
+        var txtbx = document.getElementById("<%=txtInput.ClientID%>");
+        $(txtbx).val("");
+    }
+
+    $(".fa-exclamation-triangle.Error_Icon").hover(function () {
+        var control_tooltip = "";
+        var Err_Validate_Control = "";
+        Err_Validate_Control = $(this).parent('span').attr('data-val-controltovalidate');
+        control_tooltip = $('#' + Err_Validate_Control).attr('title');
+        $(this).attr('title', control_tooltip);
+    });
+
+    // Initialize InputMask
+    if($("#ctl00_MainContent_txt_Otp").length > 0) {
+        $("#ctl00_MainContent_txt_Otp").inputmask({
+            mask: "999999",
+            placeholder: "XXXXXX"
+        });
+    }
+
+    $('.show_date_function_EQ').datepicker({
+        format: 'dd/mm/yyyy',
+        useCurrent: false,
+        constrainInput: false
+    })
+   //Listen for the change even on the input
+   .change(dateChanged)
+   .on('changeDate', dateChanged);
+
+});
+
+function Print_Grievances_Slip(Page_Id, Page_Title) {
+    $('#chartdiv').removeClass('chartdiv').addClass('chartdiv_print');
+    setTimeout(function () {
+
+        var contents = document.getElementById(Page_Id).innerHTML;
+        var frame1 = document.createElement('iframe');
+        frame1.name = "frame1";
+        frame1.style.position = "absolute";
+        frame1.style.top = "-1000000px";
+        document.body.appendChild(frame1);
+        var frameDoc = (frame1.contentWindow) ? frame1.contentWindow : (frame1.contentDocument.document) ? frame1.contentDocument.document : frame1.contentDocument;
+        frameDoc.document.open();
+        frameDoc.document.write('<html><head><title> ' + Page_Title + ' </title>');
+        frameDoc.document.write('<link href="../../Assets/css/print_md.css" rel="stylesheet" type="text/css" />');
+        frameDoc.document.write('</head><body> <div class="text-center"> <span class="Top_Inner_Haeding"> ' + Page_Title + ' </span> </div>');
+        frameDoc.document.write('');
+        frameDoc.document.write(contents);
+        frameDoc.document.write('<footer class="lbl_css text-center" style="position:fixed;bottom:0;width:100%;"> Copyright © 2019 , Content on this website is published and managed by : <a  href="#" target="_blank"> UPPSC , Prayagraj </a> , All rights reserved. </footer> </body> </html>');
+        frameDoc.document.close();
+        setTimeout(function () {
+            window.frames["frame1"].focus();
+            window.frames["frame1"].print();
+            document.body.removeChild(frame1);
+        }, 100);
+        $('#chartdiv').removeClass('chartdiv_print').addClass('chartdiv');
+        return false;
+    }, 100);
+}
+
+

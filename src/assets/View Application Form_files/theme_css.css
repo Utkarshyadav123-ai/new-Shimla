@@ -1,0 +1,134 @@
+﻿
+.setting > a, .setting > a:hover {
+    display: contents !important;
+    text-decoration: none;
+}
+
+.setting span {
+    text-align: center;
+    font-size: 0.85rem !important;
+    font-weight: 600;
+    position: relative;
+    top: -5px;
+    padding-left: 6px;
+}
+
+.p-y {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+
+.site-settings button.close span {
+    position: relative;
+    top: -10px;
+}
+
+.site-settings button.close {
+    position: relative;
+    top: 8px;
+    color: #fff;
+    text-shadow: none;
+    opacity: 1;
+    font-size: 2.5em;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.site-settings .no-border {
+    border: 1px solid #88898a !important;
+    border-radius: 0px;
+}
+
+.site-settings .btn {
+    padding: .25rem .75rem;
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.theme_color_setting {
+    background-color: white;
+    padding: 3px;
+}
+
+.site-settings span.fa-plus,
+.site-settings span.fa-minus {
+    padding-right: 5px;
+    position: relative;
+    top: 1px;
+}
+
+.theme_color_setting .btn-group > i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.oceanside {
+    color: #046B99;
+}
+
+.orangecounty {
+    color: #A15801;
+}
+
+.pasorobles {
+    color: #9a0000;
+}
+
+.santabarbara {
+    color: #60617d;
+}
+
+.sierra {
+    color: #447766;
+}
+
+.mono {
+    color: #545351;
+}
+
+.trinity {
+    color: #446A7C;
+}
+
+.eureka {
+    color: #3E4B4D;
+}
+
+.sacramento {
+    color: #153554;
+}
+
+.utility-header .flex-row .settings-links a, .utility-header .flex-row .settings-links span.btn {
+    border-left: 1px solid white;
+}
+
+.site-settings .btn-group {
+    margin-left: 10px;
+}
+
+.common-left ul li {
+    font-size: .65rem;
+}
+
+    .common-left ul li span {
+        font-size: .85rem;
+    }
+
+.footer-wrapper #block-menu-menu-secondary-menu ul.menu li {
+    font-size: 0.8rem;
+}
+
+.footer-wrapper .bottom-right #block-block-25 p, .fa-stack {
+    font-size: 0.8rem;
+}
+
+.strongText {
+    font-size: 2.5rem;
+}
+
+.nationInfo_2 {
+    font-size: 0.9rem;
+}
